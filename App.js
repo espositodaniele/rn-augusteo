@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
+import DetailScreen from './screens/DetailScreen';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -28,8 +29,14 @@ export default function App() {
     return (
         <View style={{flex: 1}} onLayout={onLayoutRootView}>
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator
+                    initialRouteName="HomeScreen">
                     <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+                    <Stack.Screen
+                        name="DetailScreen"
+                        component={DetailScreen}
+                        options={{ headerShown: false }}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </View>

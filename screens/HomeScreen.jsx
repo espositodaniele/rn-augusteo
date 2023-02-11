@@ -13,7 +13,13 @@ export default function HomeScreen({navigation}) {
 
     useEffect(() => {
         console.log(logoWidth);
-      }, []);
+    }, []);
+
+    function gotoSpettacolo(spettacoloId) {
+        navigation.navigate('DetailScreen', {
+            spettacoloId: spettacoloId,
+        });
+    }
 
     return (
             <View className="flex-1 bg-primary-50 px-5">
@@ -38,9 +44,7 @@ export default function HomeScreen({navigation}) {
                             <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                                 {
                                     spettacoli.map((card, index) => (
-                                        <TouchableOpacity key={index} onPress={() => {
-                                                console.log('ciao');
-                                            }}>
+                                        <TouchableOpacity key={index} onPress={() => gotoSpettacolo(card)}>
                                             <View className="pt-8 mr-5 overflow-hidden w-full" style={{width: cardWidth, height: cardWidth * 2, overflow: 'hidden'}}>
                                                 <Image source={card.image} style={{width: cardWidth, height: cardWidth * 2, resizeMode: 'cover', overflow: 'hidden'}} resizeMode="cover"/>
                                             </View>
@@ -55,9 +59,7 @@ export default function HomeScreen({navigation}) {
                             <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                                 {
                                     spettacoli.map((card, index) => (
-                                        <TouchableOpacity key={index} onPress={() => {
-                                                console.log('ciao');
-                                            }}>
+                                        <TouchableOpacity key={index} onPress={() => gotoSpettacolo(card)}>
                                             <View className="pt-8 mr-5 overflow-hidden w-full" style={{width: cardWidth, height: cardWidth * 2, overflow: 'hidden'}}>
                                                 <Image source={card.image} style={{width: cardWidth, height: cardWidth * 2, resizeMode: 'cover', overflow: 'hidden'}} resizeMode="cover"/>
                                             </View>
@@ -72,9 +74,7 @@ export default function HomeScreen({navigation}) {
                             <ScrollView horizontal={true} style={{ paddingBottom: 30 }} showsHorizontalScrollIndicator={false}>
                                 {
                                     spettacoli.map((card, index) => (
-                                        <TouchableOpacity key={index} onPress={() => {
-                                                console.log('ciao');
-                                            }}>
+                                        <TouchableOpacity key={index} onPress={() => gotoSpettacolo(card)}>
                                             <View className="pt-8 mr-5 overflow-hidden w-full" style={{width: cardWidth, height: cardWidth * 2, overflow: 'hidden'}}>
                                                 <Image source={card.image} style={{width: cardWidth, height: cardWidth * 2, resizeMode: 'cover', overflow: 'hidden'}} resizeMode="cover"/>
                                             </View>
