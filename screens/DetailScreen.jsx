@@ -80,7 +80,7 @@ export default function DetailScreen({route, navigation}) {
 
     const Playlist = () => {
         return (
-            <View >
+            <View className="px-5">
                 {playlist.map((song, index) => {
                     return (
                         <View className="flex flex-row items-center justify-between py-2 mr-5" key={JSON.stringify(song.name + index)}>
@@ -166,21 +166,28 @@ export default function DetailScreen({route, navigation}) {
                         'worklet';
                         layoutY.value = event.nativeEvent.layout.y;
                     }}
-                    className="absolute bottom-0 top-0 left-0 right-0 justify-end items-center px-5  z-10"
+                    className="absolute bottom-0 top-0 left-0 right-0 justify-end items-start z-10 px-5"
                     style={[textAnim]}>
-                        <Animated.Text numberOfLines={2} className="text-6xl font-bold text-white text-center">
+                        <Image
+                            style={styles.qrcode}
+                            source={require('../assets/qr-code.jpeg')}
+                        />
+                        <View className="px-8 bg-red-600 py-2 mt-4 rounded-xl">
+                            <Text className="text-white font-bold text-lg uppercase">Scan per acquistare</Text>
+                        </View>
+                        <Animated.Text numberOfLines={2} className="text-6xl font-bold text-white text-center mt-4">
                             Natale in casa cupiello
                         </Animated.Text>
                     </Animated.View>
                 <AnimatedLinearGradient className="absolute inset-0"
                     style={[scaleAnim]}
                     colors={[
-                        `rgba(0,0,0,${0})`,
-                        `rgba(0,0,0,${0.1})`,
-                        `rgba(0,0,0,${0.3})`,
-                        `rgba(0,0,0,${0.5})`,
-                        `rgba(0,0,0,${0.8})`,
-                        `rgba(0,0,0,${1})`,
+                        `rgba(27,35,50,${0})`,
+                        `rgba(27,35,50,${0.1})`,
+                        `rgba(27,35,50,${0.3})`,
+                        `rgba(27,35,50,${0.5})`,
+                        `rgba(27,35,50,${0.8})`,
+                        `rgba(27,35,50,${1})`,
                     ]}
                 />
             </Animated.View>
@@ -227,7 +234,7 @@ export default function DetailScreen({route, navigation}) {
             };
         });
         return (
-            <Animated.View className="absolute w-full px-4 pt-10 flex flex-row items-center h-28 justify-between z-10 bg-black" style={[opacityAnim]}>
+            <Animated.View className="absolute w-full px-4 pt-10 flex flex-row items-center h-28 justify-between z-10 bg-primary-50" style={[opacityAnim]}>
                 <ChevronLeft />
                 <Text className="text-white font-bold"> CIAO</Text>
             </Animated.View>
@@ -236,7 +243,7 @@ export default function DetailScreen({route, navigation}) {
 
     return (
         
-        <Animated.View className="flex-1 bg-black">
+        <Animated.View className="flex-1 bg-primary-50">
             {isLoading ? (
                 <ActivityIndicator style={{ marginTop: 8 }} className="flex justify-center items-center flex-1" size="large" color="gray" />
             ) : (
@@ -245,27 +252,8 @@ export default function DetailScreen({route, navigation}) {
                     <PosterImage sv={sv} />
                     <Animated.View className="flex-1">
                         <Animated.ScrollView className="flex-1" onScroll={scrollHandler} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
-                            <Animated.View style={[animatedScrollStyle]} className="pb-10">
-                                <Animated.View className="flex items-end justify-end z-10 pb-4 pt-4" style={[stickyElement]}
-                                    onLayout={(event) => {
-                                        'worklet';
-                                        layoutY.value = event.nativeEvent.layout.y;
-                                    }}
-                                > 
-                                    <View className="flex justify-center items-end">
-                                        
-                                    <Image
-                                            style={styles.qrcode}
-                                            source={require('../assets/qr-code.jpeg')}
-                                        />
-                                        
-                                        <View className="bg-green-500 px-8 py-2 items-center rounded-2xl mt-4">
-                                            <Text className="text-lg font-bold text-white uppercase">
-                                                scan per acquistare
-                                            </Text>
-                                        </View>
-                                    </View>
-                                </Animated.View>
+                            <Animated.View style={[animatedScrollStyle]} className="pb-10 mt-5">
+                                 
                                 <Playlist />
                             </Animated.View>
                         </Animated.ScrollView>
@@ -402,8 +390,8 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     qrcode: {
-        width: 230,
-        height: 230,
+        width: 150,
+        height: 150,
         borderRadius: 20,
         borderWidth: 4,
         borderColor: 'white',
